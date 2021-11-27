@@ -28,7 +28,7 @@ export default function Home() {
     setShowAnswer(true);
     //
     try {
-      const res = await fetch("http://localhost:5000/", {
+      const res = await fetch("http://localhost:5000/convert", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
