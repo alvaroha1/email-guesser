@@ -13,6 +13,7 @@ export default function Home() {
 
   const [showAnswer, setShowAnswer] = useState(false);
   const [userEmail, setUserEmail] = useState(undefined);
+  const [responseSuccess, setResponseSuccess] = useState(false);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -24,9 +25,7 @@ export default function Home() {
 
   const registerUser = async (event) => {
     event.preventDefault()
-    //
     setShowAnswer(true);
-    //
     try {
       const res = await fetch("http://localhost:5000/convert", {
         method: 'POST',
@@ -37,7 +36,9 @@ export default function Home() {
       })
 
       const result = await res.json()
-      console.log(result, "response from server")
+      setUserEmail(result.mail);
+      setResponseSuccess(result.success);
+      setTimeout(() => setShowAnswer(false), 20000);
     } catch (error) {
       console.error(error)
     }
@@ -65,7 +66,8 @@ export default function Home() {
               <InputField required={true} handleInput={handleChange} name="domain" type="text" label="Domain" />
             </div>
             <div className={styles.answer_box}>
-              {showAnswer ? <p>Congrats your email is: </p> : null}
+              {showAnswer && responseSuccess ? <p>Congrats your email is: {userEmail}</p> : null}
+              {showAnswer && !responseSuccess? <p>{userEmail}</p> : null}
             </div>
             <div className={styles.button_box}>
               <Button type="reset" value="Reset" style="primary" />
