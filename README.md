@@ -19,6 +19,16 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Run Tests
+
+Run the tests for the frontend:
+
+```bash
+npm run test
+# or
+yarn test
+```
 ## Backend
 
 - Node server
