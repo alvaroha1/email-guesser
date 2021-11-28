@@ -6,7 +6,7 @@ export default function InputField(props) {
   return (
     <div className={styles.box}>
       <label htmlFor="inp" className={styles.inp}>
-        <input id="inp" placeholder="&nbsp;" name={name} type={type} required={required} onChange={handleInput} />
+        <input id="inp" placeholder="&nbsp;" name={name} type={type} required={required} onChange={handleInput} data-testid="input-field"/>
         <span className={styles.label}>{label}</span>
         <span className={styles.focusbg}></span>
       </label>
